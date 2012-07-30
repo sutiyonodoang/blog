@@ -22,12 +22,43 @@ class SubjectsController < ApplicationController
 		@subject = Subject.new(params[:subject])
 		# Save the object
 		if @subject.save 
-			# If save succeeeds, redirect to the list action
+			# If save succeeds, redirect to the list action
+			flash[:notice] =  "Subject created."
 			redirect_to(:action => 'list')
 		else
 			# If save fails, redisplay the form so user can fix the problem
 			render('new')
 		end
+	end
+
+	def edit
+		@subject = Subject.find(params[:id])
+	end
+
+	def update
+		# Find object using form parameters
+		@subject = Subject.find(params[:id])
+		# Update the object
+		if @subject.update_attributes(params[:subject]) 
+			# If update succeeds, redirect to the list action
+			flash[:notice] = "Subject updated."
+			redirect_to(:action => 'show', :id => @subject.id)
+		else
+			# If save fails, redisplay the form so user can fix the problem
+			render('edit')
+		end
+	end
+
+	def delete
+		@subject = Subject.find(params[:id])
+	end
+
+	def destroy
+		# @subject = Subject.find(params[:id])
+		#@subject.destroy
+		Subject.find(params[:id]).destroy
+		flash[:notice] = "Subject destroyed."
+		redirect_to(:action => 'list')		
 	end
 
 end
