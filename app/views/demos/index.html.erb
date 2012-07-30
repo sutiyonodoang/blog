@@ -1,16 +1,11 @@
 <h1>Demo#index</h1>
 <p>Selamat Belajar</p>
 <p>Hari yang melelahkan</p>
-<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
-codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab
-#version=7,0,0,0" width="360" height="68">
-  <param name=movie value="slamt.swf" />
-  <param name="wmode" value="transparent" />
-  <param name="play" VALUE="true" />
-  <param name="loop" VALUE="true" />
-  <param name="quality" value="low" />
-  <embed src="slamt.swf" quality="low" wmode="transparent" 
-pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-
-shockwave-flash" width="360" height="68">
-  </embed>
-</object>
+
+ <!-- <%= params[:id] %> -->
+ID   : <%= params[:id].to_i %> <br />
+NEXT PAGE : <%= params[:page].to_i + 1 %>
+
+<hr />
+<%= params.inspect %>
+<%= link_to('Go Back to hello page',{:action => 'hello', :id => 20, :page => 5}) %>
