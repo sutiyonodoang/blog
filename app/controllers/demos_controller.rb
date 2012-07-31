@@ -1,5 +1,6 @@
 class DemosController < ApplicationController
   
+  layout 'admin'
   def index
   	#render(:action => 'hello' )
   	#render(:template => 'demos/index' )
@@ -20,6 +21,10 @@ class DemosController < ApplicationController
 
   def other_hello
   	render(:text => 'Hello everyone!')
+  end
+
+  def javasctipt
+    
   end
 
 end
