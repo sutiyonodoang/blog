@@ -27,4 +27,8 @@ class DemosController < ApplicationController
     
   end
 
+  def test_helpers
+    
+  end
+
 end
