@@ -9,3 +9,5 @@ NEXT PAGE : <%= params[:page].to_i + 1 %>
 <hr />
 <%= params.inspect %>
 <%= link_to('Go Back to hello page',{:action => 'hello', :id => 20, :page => 5}) %>
+<hr />
+<%= image_tag('rails.png', :size => '50x64', :alt => 'Rails Logo') %>
