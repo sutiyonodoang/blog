@@ -1,0 +1,29 @@
+		<table Summary="Section form field" > 
+			<tr>
+				<th>Name</th>
+				<td><%= f.text_field(:name) %></td>
+			</tr>
+			<tr>
+				<th>Position</th>
+				<td><%= f.select(:position, 1..@section_count) %></td>
+			</tr>
+			<tr>
+				<th>Visible</th>
+				<td><%= f.check_box(:visible) %></td>
+			</tr>
+			<tr>
+				<th>Content Type</th>
+				<td>
+					<%= f.radio_button(:content_type, 'text') %> Text
+					<%= f.radio_button(:content_type, 'HTML') %> HTML
+				</td>
+			</tr>			
+			<tr>
+				<th>Content</th>
+				<td><%= f.text_area(:content, :size => '39x10') %></td>
+			</tr>
+			<tr>
+				<th>Created </th>
+				<td><%= f.datetime_select(:created_at, :order => [:day, :month, :year]) %></td>
+			</tr>
+		</table>
