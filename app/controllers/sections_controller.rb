@@ -1,6 +1,7 @@
 class SectionsController < ApplicationController
 
 	layout 'admin'
+	before_filter :ready_section,  :only => [:show, :update, :destroy]
 
 	def index
 		list
@@ -12,7 +13,7 @@ class SectionsController < ApplicationController
 	end
 
 	def show
-		@section = Section.find(params[:id])
+		
 	end
 
 	def new
@@ -36,13 +37,13 @@ class SectionsController < ApplicationController
 	end
 
 	def edit
-		@section = Section.find(params[:id])
+		
 		@section_count = Section.count
 	end
 
 	def update
 		# Find object using form parameters
-		@section = Section.find(params[:id])
+		#@section = Section.find(params[:id])
 		# Update the object
 		if @section.update_attributes(params[:section]) 
 			# If update succeeds, redirect to the list action
@@ -56,15 +57,21 @@ class SectionsController < ApplicationController
 	end
 
 	def delete
-		@section = Section.find(params[:id])
+		#@section = Section.find(params[:id])
 	end
 
 	def destroy
 		# @section = Section.find(params[:id])
-		#@section.destroy
-		Section.find(params[:id]).destroy
+		@section.destroy
+		#Section.find(params[:id]).destroy
 		flash[:notice] = "Section destroyed."
 		redirect_to(:action => 'list')		
+	end
+
+	private
+
+	def ready_section
+		@section = Section.find(params[:id])
 	end
 
 end
